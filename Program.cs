@@ -25,7 +25,7 @@ namespace MVP_SQLite_Dapper_UpDB
                         switch (args[1])
                         {
                             case "migrate":
-                                var connectionString = "Data Source=databse.db;";
+                                var connectionString = "Data Source=database.db;";
                                 var upgrader = 
                                     DeployChanges.To
                                     .SQLiteDatabase(connectionString)
@@ -40,6 +40,9 @@ namespace MVP_SQLite_Dapper_UpDB
                                     Console.ResetColor();
                                     Console.ReadLine();
                                 }
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("Success!");
+                                Console.ResetColor();
                                 break;
                             default:
                                 break;
