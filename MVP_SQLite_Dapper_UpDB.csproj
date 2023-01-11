@@ -21,4 +21,10 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Model\" />
+    <Folder Include="Presenter\" />
+    <Folder Include="View\" />
+  </ItemGroup>
+
 </Project>
