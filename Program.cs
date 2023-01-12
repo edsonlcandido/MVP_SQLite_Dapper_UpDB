@@ -1,6 +1,8 @@
 using System.Runtime.InteropServices;
 using DbUp;
 using System.Reflection;
+using MVP_SQLite_Dapper_UpDB.View;
+
 namespace MVP_SQLite_Dapper_UpDB
 {
     internal static class Program
@@ -55,7 +57,7 @@ namespace MVP_SQLite_Dapper_UpDB
             }
             else
             {
-                Application.Run(new Form1());
+                Application.Run(new FormUsuario());               
             }            
         }
         [DllImport("kernel32.dll", SetLastError = true)]
