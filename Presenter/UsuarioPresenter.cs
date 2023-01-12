@@ -11,24 +11,19 @@ namespace MVP_SQLite_Dapper_UpDB.Presenter
     public class UsuarioPresenter
     {
         private readonly IUsuarioView _view;
-
         public UsuarioPresenter(IUsuarioView view)
         {
             _view = view;
-            _view.SaveEvent += OnSaveUsuario;
-            _view.DeleteEvent += OnDeleteUsuario;
-            _view.EditEvent += OnEditUsuario;
-
-            LoadUsuario();
+            LoadUsuarios();
         }
 
-        private void LoadUsuario()
+        public void LoadUsuarios()
         {
-            var usuarios = Usuario.GetAll();
+            IEnumerable<Usuario> usuarios = Usuario.GetAll();
             _view.LoadUsuarios(usuarios);
         }
 
-        private void OnEditUsuario(object sender, EventArgs e)
+        private void EditUsuario()
         {
             Usuario usuario = new Usuario
             {
@@ -40,12 +35,12 @@ namespace MVP_SQLite_Dapper_UpDB.Presenter
             Usuario.Save(usuario);
         }
 
-        private void OnDeleteUsuario(object sender, EventArgs e)
+        private void DeleteUsuario()
         {
             Usuario.Delete(_view.Id);
         }
 
-        private void OnSaveUsuario(object sender, EventArgs e)
+        public void SaveUsuario()
         {
             Usuario usuario = new Usuario
             {
@@ -55,6 +50,7 @@ namespace MVP_SQLite_Dapper_UpDB.Presenter
             };
 
             Usuario.Save(usuario);
+            LoadUsuarios();
         }
     }
 }

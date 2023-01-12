@@ -36,6 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridViewUsuario = new System.Windows.Forms.DataGridView();
+            this.buttonClear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsuario)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,16 +56,17 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(12, 108);
+            this.buttonSave.Location = new System.Drawing.Point(98, 108);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(80, 30);
             this.buttonSave.TabIndex = 2;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(184, 108);
+            this.buttonDelete.Location = new System.Drawing.Point(270, 108);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(80, 30);
             this.buttonDelete.TabIndex = 3;
@@ -73,7 +75,7 @@
             // 
             // buttonEdit
             // 
-            this.buttonEdit.Location = new System.Drawing.Point(98, 108);
+            this.buttonEdit.Location = new System.Drawing.Point(184, 108);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(80, 30);
             this.buttonEdit.TabIndex = 4;
@@ -100,20 +102,36 @@
             // 
             // dataGridViewUsuario
             // 
-            this.dataGridViewUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.dataGridViewUsuario.AllowUserToAddRows = false;
+            this.dataGridViewUsuario.AllowUserToDeleteRows = false;
+            this.dataGridViewUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewUsuario.Location = new System.Drawing.Point(2, 144);
             this.dataGridViewUsuario.Name = "dataGridViewUsuario";
+            this.dataGridViewUsuario.ReadOnly = true;
             this.dataGridViewUsuario.RowTemplate.Height = 25;
+            this.dataGridViewUsuario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewUsuario.Size = new System.Drawing.Size(695, 385);
             this.dataGridViewUsuario.TabIndex = 7;
+            // 
+            // buttonClear
+            // 
+            this.buttonClear.Location = new System.Drawing.Point(12, 108);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(80, 30);
+            this.buttonClear.TabIndex = 8;
+            this.buttonClear.Text = "Clear";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // FormUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(698, 530);
+            this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.dataGridViewUsuario);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -142,5 +160,6 @@
         private Label label1;
         private Label label2;
         private DataGridView dataGridViewUsuario;
+        private Button buttonClear;
     }
 }
