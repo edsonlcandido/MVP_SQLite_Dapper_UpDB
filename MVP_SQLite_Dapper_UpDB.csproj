@@ -19,6 +19,9 @@
     <None Update="Migrations\202301111352_add_idade_to_usuarios.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Migrations\202301112040_remove_idade_from_usuarios.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
