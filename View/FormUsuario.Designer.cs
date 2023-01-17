@@ -87,18 +87,18 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 17);
+            this.label1.Size = new System.Drawing.Size(68, 17);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Nome";
+            this.label1.Text = "First name";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 57);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 17);
+            this.label2.Size = new System.Drawing.Size(67, 17);
             this.label2.TabIndex = 6;
-            this.label2.Text = "Sobrenome";
+            this.label2.Text = "Last name";
             // 
             // dataGridViewUsuario
             // 
@@ -142,7 +142,7 @@
             this.Controls.Add(this.textBoxNome);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "FormUsuario";
-            this.Text = "Usuario";
+            this.Text = "User";
             this.Load += new System.EventHandler(this.FormUsuario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsuario)).EndInit();
             this.ResumeLayout(false);
