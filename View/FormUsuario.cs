@@ -26,6 +26,11 @@ namespace MVP_SQLite_Dapper_UpDB.View
         public int Id { get ; set ; }
         public string Nome { get => textBoxNome.Text; set => textBoxNome.Text = value; }
         public string Sobrenome { get => textBoxSobrenome.Text; set => textBoxSobrenome.Text=value; }
+        
+        public event EventHandler SaveEvent;
+        public event EventHandler ClearUsuario;
+        public event EventHandler DeleteUsuario;
+        public event EventHandler UpdateUsuario;
 
         public void LoadUsuarios(IEnumerable<Usuario> usuarios)
         {
@@ -35,19 +40,17 @@ namespace MVP_SQLite_Dapper_UpDB.View
 
         private void FormUsuario_Load(object sender, EventArgs e)
         {
-            _presenter.LoadUsuarios();
+            
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            _presenter.SaveUsuario();
+            SaveEvent?.Invoke(sender, e);
         }
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
-            this.Id = 0;
-            this.Nome = "";
-            this.Sobrenome = "";
+            ClearUsuario?.Invoke(sender, e);
         }
     }
 }
