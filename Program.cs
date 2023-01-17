@@ -1,6 +1,10 @@
 using System.Runtime.InteropServices;
 using DbUp;
 using System.Reflection;
+using MVP_SQLite_Dapper_UpDB.View;
+using MVP_SQLite_Dapper_UpDB.Presenter;
+using MVP_SQLite_Dapper_UpDB.Model;
+
 namespace MVP_SQLite_Dapper_UpDB
 {
     internal static class Program
@@ -25,7 +29,7 @@ namespace MVP_SQLite_Dapper_UpDB
                         switch (args[1])
                         {
                             case "migrate":
-                                var connectionString = "Data Source=databse.db;";
+                                var connectionString = "Data Source=database.db;";
                                 var upgrader = 
                                     DeployChanges.To
                                     .SQLiteDatabase(connectionString)
@@ -40,6 +44,9 @@ namespace MVP_SQLite_Dapper_UpDB
                                     Console.ResetColor();
                                     Console.ReadLine();
                                 }
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("Success!");
+                                Console.ResetColor();
                                 break;
                             default:
                                 break;
@@ -52,7 +59,7 @@ namespace MVP_SQLite_Dapper_UpDB
             }
             else
             {
-                Application.Run(new Form1());
+                Application.Run(new FormUsuario());
             }            
         }
         [DllImport("kernel32.dll", SetLastError = true)]
