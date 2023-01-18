@@ -15,7 +15,9 @@ namespace MVP_SQLite_Dapper_UpDB.Presenter
         {
             _view = view;
             _view.SaveEvent += SaveUsuario;
-            _view.ClearUsuario += ClearUsuario;
+            _view.ClearEvent += ClearUsuario;
+            _view.UpdateEvent += UpdateUsuario;
+            _view.DeleteEvent += DeleteUsuario;
             LoadUsuarios();
         }
 
@@ -25,7 +27,7 @@ namespace MVP_SQLite_Dapper_UpDB.Presenter
             _view.LoadUsuarios(usuarios);
         }
 
-        private void EditUsuario()
+        private void UpdateUsuario(object sender, EventArgs e)
         {
             Usuario usuario = new Usuario
             {
@@ -33,8 +35,9 @@ namespace MVP_SQLite_Dapper_UpDB.Presenter
                 Nome = _view.Nome,
                 Sobrenome = _view.Sobrenome
             };
-
             Usuario.Save(usuario);
+            LoadUsuarios();
+            ClearUsuario(sender, e);
         }
 
         private void DeleteUsuario(object sender, EventArgs e)
