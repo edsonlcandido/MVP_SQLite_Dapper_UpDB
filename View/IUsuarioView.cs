@@ -14,8 +14,8 @@ namespace MVP_SQLite_Dapper_UpDB.View
         string Sobrenome { get; set; }
         void LoadUsuarios(IEnumerable<Usuario> usuarios);
         event EventHandler SaveEvent;
-        event EventHandler ClearUsuario;
-        event EventHandler DeleteUsuario;
-        event EventHandler UpdateUsuario;
+        event EventHandler ClearEvent;
+        event EventHandler DeleteEvent;
+        event EventHandler UpdateEvent;
     }
 }
