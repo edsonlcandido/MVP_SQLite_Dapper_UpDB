@@ -2,7 +2,7 @@
 
 This project I create to study about software development using C# language with winforms, MVP pattern, SQLite with Dapper, and for control version of database I used DbUp.
 
-I used a chatGPT talk to guide me in this project, conversation is in file 'ChatGPT.md' (conversation in portuguese)
+I used a chatGPT talk to guide me in this project, conversation is in file [ChatGPT.md](./ChatGPT.md) (conversation in portuguese)
 
 ## Create database
 
@@ -18,7 +18,7 @@ After I create the first CRUD operation implements MVP pattern like chat GPT sho
 
 At this point I read about MVP pro features, like easy way to test the events with need a form, I ask to chat GPT how do this in MVP, he show me codes below:
 
-```
+```C#
 
 [TestClass]
 public class PresenterTests
@@ -49,7 +49,7 @@ public class PresenterTests
 
 ```
 
-```
+```C#
 
 public class MockView : IView
 {
