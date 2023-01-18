@@ -64,4 +64,4 @@ public class MockView : IView
 
 ```
 
-I like these way I will implement in future of my app.
+I like these way I will implement in future on my app.
