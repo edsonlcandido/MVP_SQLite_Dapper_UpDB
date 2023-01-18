@@ -24,7 +24,7 @@ Aqui está um exemplo de como o model "Usuario" poderia ser codificado em C# usa
 
 Model:
 
-```
+```C#
 using System;
 using Dapper;
 using System.Data.SQLite;
@@ -67,7 +67,7 @@ public string Sobrenome { get; set; }
 View:
 
 
-```
+```C#
 using System;
 
 public interface IUsuarioView
@@ -81,7 +81,7 @@ event EventHandler<EventArgs> SaveUsuario;
 
 Presenter:
 
-```
+```C#
 using System;
 
 public class UsuarioPresenter
@@ -115,7 +115,7 @@ Tenha em mente que esse é apenas um exemplo básico, e é possível que você p
 
 Além disso, é importante notar que esse exemplo assume que você já tem um banco de dados SQLite configurado e pronto para usar. Caso contrário, você precisará criar o banco de dados e configurá-lo antes de poder usar o código acima. Para criar tabelas, você pode usar o comando SQL:
 
-```
+```SQL
 CREATE TABLE usuarios (id INTEGER PRIMARY KEY, nome TEXT, sobrenome TEXT);
 ```
 
@@ -129,7 +129,7 @@ Aqui está um exemplo de como o formulário poderia ser codificado em C#, usando
 
 View:
 
-```
+```C#
 using System;
 using System.Windows.Forms;
 
@@ -170,7 +170,7 @@ public event EventHandler<EventArgs> EditUsuario;
 
 Presenter:
 
-```
+```C#
 using System;
 
 public class UsuarioPresenter
@@ -232,7 +232,7 @@ E além disso, a interface gráfica pode ser modificada de acordo com suas neces
 
 Aqui está um exemplo de como as ações de deletar e editar poderiam ser implementadas no model "Usuario" em C#:
 
-```
+```C#
 using System;
 using Dapper;
 using System.Data.SQLite;
@@ -326,7 +326,7 @@ Uma vez que suas tabelas estejam configuradas, você pode usar um comando SQL pa
 
 Aqui está um exemplo de como o comando poderia ser escrito em SQL:
 
-```
+```SQL
 SELECT e._
 FROM usuarios u
 JOIN enderecos e ON u.id = e.usuario_id
@@ -337,7 +337,7 @@ Este comando seleciona todas as colunas da tabela "enderecos" (indicado pelo "e.
 
 E você pode usar essa consulta juntamente com Dapper, para obter uma lista de endereços de um usuário específico, passando o ID como parâmetro.
 
-```
+```C#
 using (var connection = new SQLiteConnection("Data Source=database.db"))
 {
     var enderecos = connection.Query<Endereco>("SELECT e.\* FROM usuarios u JOIN enderecos e ON u.id = e.usuario_id WHERE u.id = @id", new { id = usuarioId });
@@ -351,7 +351,7 @@ E além disso, a estrutura das tabelas pode variar, e isso pode exigir modifica�
 
 Aqui está um exemplo de como um model "Endereco" poderia ser codificado em C# usando Dapper para obter todos os endereços de um usuário específico:
 
-```
+```C#
 using System.Collections.Generic;
 using Dapper;
 using System.Data.SQLite;
@@ -405,7 +405,7 @@ Esses são apenas exemplos básicos e a implementação pode variar de acordo co
 
 Aqui está um exemplo de como um model "Endereco" e "Usuarios_Enderecos" poderia ser codificado em C#, utilizando Dapper para lidar com uma relação de muitos para muitos entre usuários e endereços:
 
-```
+```C#
 // Model Endereco
 public class Endereco
 {
@@ -501,7 +501,7 @@ Para incluir a biblioteca "updb" em seu projeto e criar as migrações para o se
 1. Instale a biblioteca "updb" usando o gerenciador de pacotes NuGet na sua IDE ou executando o comando `dotnet add package updb` no terminal. 
 2. Crie um arquivo "updb.json" na raiz do seu projeto com as configurações de conexão do seu banco de dados. O arquivo deve conter as informações de conexão como string de conexão, nome do banco de dados, usuário e senha, se necessário.
 
-```
+```JSON
 {
 "connectionString": "Data Source=database.db",
 "providerName": "Microsoft.Data.Sqlite"
@@ -526,7 +526,7 @@ Lembre-se de que as migrações são aplicadas em ordem cronológica, então é 
 
 Aqui está um exemplo de como um arquivo de migração para criar a tabela "usuarios" poderia ser escrito:
 
-```
+```C#
 -- File: 20230112020100_create_usuarios.sql
 
 CREATE TABLE usuarios (
@@ -548,8 +548,8 @@ Lembre-se de que o script SQL acima é apenas um exemplo básico e pode precisar
 
 Aqui está um exemplo de como um arquivo de migração para adicionar uma coluna "idade" à tabela "usuarios" poderia ser escrito:
 
-```
--- File: 20230112030000_add_idade_to_usuarios.sql
+```SQL
+--File: 20230112030000_add_idade_to_usuarios.sql
 
 ALTER TABLE usuarios
 ADD COLUMN idade INTEGER NOT NULL DEFAULT 0;
@@ -567,8 +567,8 @@ Lembre-se de que é importante garantir que a ordem das migrações estejam corr
 
 Aqui está um exemplo de como um arquivo de migração para remover a coluna "idade" da tabela "usuarios" poderia ser escrito:
 
-```
--- File: 20230112040000_remove_idade_from_usuarios.sql
+```SQL
+--File: 20230112040000_remove_idade_from_usuarios.sql
 
 ALTER TABLE usuarios
 DROP COLUMN idade;
