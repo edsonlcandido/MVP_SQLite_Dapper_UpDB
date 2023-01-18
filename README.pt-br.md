@@ -139,6 +139,8 @@ public class UsuarioPresenter
 ```
 
 ```C#
+// Arquivo Model.Usuario
+
 using Dapper;
 using System.Data.SQLite;
 
