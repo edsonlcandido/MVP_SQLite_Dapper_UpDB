@@ -527,7 +527,7 @@ Lembre-se de que as migrações são aplicadas em ordem cronológica, então é 
 Aqui está um exemplo de como um arquivo de migração para criar a tabela "usuarios" poderia ser escrito:
 
 ```C#
--- File: 20230112020100_create_usuarios.sql
+--File: 20230112020100_create_usuarios.sql
 
 CREATE TABLE usuarios (
 id INTEGER PRIMARY KEY AUTOINCREMENT,
