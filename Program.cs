@@ -4,6 +4,7 @@ using System.Reflection;
 using MVP_SQLite_Dapper_UpDB.View;
 using MVP_SQLite_Dapper_UpDB.Presenter;
 using MVP_SQLite_Dapper_UpDB.Model;
+using NUnit.Framework;
 
 namespace MVP_SQLite_Dapper_UpDB
 {
@@ -59,6 +60,15 @@ namespace MVP_SQLite_Dapper_UpDB
             }
             else
             {
+                var fileToBackup = "database.db";
+                var backupPath = "backup-db";
+                var dateToday = DateTime.Today.AddDays(1);
+                var dateLastAccess = File.GetLastAccessTime(fileToBackup).Date;
+                if (dateToday.CompareTo(dateLastAccess) != 0)
+                {
+                    var backup = new BackupDatabase(fileToBackup, backupPath);
+                    backup.PerformBackup();
+                }
                 Application.Run(new FormUsuario());
             }            
         }
