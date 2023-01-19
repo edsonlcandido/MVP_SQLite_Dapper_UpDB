@@ -62,7 +62,7 @@ namespace MVP_SQLite_Dapper_UpDB
             {
                 var fileToBackup = "database.db";
                 var backupPath = "backup-db";
-                var dateToday = DateTime.Today.AddDays(1);
+                var dateToday = DateTime.Today;
                 var dateLastAccess = File.GetLastAccessTime(fileToBackup).Date;
                 if (dateToday.CompareTo(dateLastAccess) != 0)
                 {
