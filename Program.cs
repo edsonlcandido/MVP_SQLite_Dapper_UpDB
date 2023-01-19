@@ -4,7 +4,6 @@ using System.Reflection;
 using MVP_SQLite_Dapper_UpDB.View;
 using MVP_SQLite_Dapper_UpDB.Presenter;
 using MVP_SQLite_Dapper_UpDB.Model;
-using NUnit.Framework;
 
 namespace MVP_SQLite_Dapper_UpDB
 {
