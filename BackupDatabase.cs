@@ -26,7 +26,7 @@ namespace MVP_SQLite_Dapper_UpDB
                 backupFolder.Create();
             }
             var backupFile = Path.Combine(_backupPath, "database.db");
-            File.Copy(_fileTobackup, backupFile);
+            File.Copy(_fileTobackup, backupFile,true);
         }
     }
 }
