@@ -25,6 +25,9 @@
     <None Update="Migrations\202301112040_remove_idade_from_usuarios.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Migrations\202301191245_create_enderecos.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
