@@ -111,6 +111,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewUsuario.Location = new System.Drawing.Point(2, 144);
+            this.dataGridViewUsuario.MultiSelect = false;
             this.dataGridViewUsuario.Name = "dataGridViewUsuario";
             this.dataGridViewUsuario.ReadOnly = true;
             this.dataGridViewUsuario.RowTemplate.Height = 25;
