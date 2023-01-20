@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,7 @@ namespace MVP_SQLite_Dapper_UpDB.Model
         {
             using (var connection = new SQLiteConnection("Data Source=database.db"))
             {
-                connection.Execute("INSERT INTO Enderecos (Rua, Numero, Bairro, Cidade, Estado) VALUES (@Rua, @Numero, @Bairro, @Cidade, @Estado)", endereco);
+                connection.Execute("INSERT INTO enderecos (Rua, Numero, Bairro, Cidade, Estado) VALUES (@Rua, @Numero, @Bairro, @Cidade, @Estado)", endereco);
             }
         }
 
@@ -29,7 +30,7 @@ namespace MVP_SQLite_Dapper_UpDB.Model
         {
             using (var connection = new SQLiteConnection("Data Source=database.db"))
             {
-                return connection.QueryFirstOrDefault<Endereco>("SELECT * FROM Enderecos WHERE Id = @id", new { id });
+                return connection.QueryFirstOrDefault<Endereco>("SELECT * FROM enderecos WHERE Id = @id", new { id });
             }
         }
 
@@ -37,7 +38,7 @@ namespace MVP_SQLite_Dapper_UpDB.Model
         {
             using (var connection = new SQLiteConnection("Data Source=database.db"))
             {
-                connection.Execute("UPDATE Enderecos SET Rua = @Rua, Numero = @Numero, Bairro = @Bairro, Cidade = @Cidade, Estado = @Estado WHERE Id = @Id", endereco);
+                connection.Execute("UPDATE enderecos SET Rua = @Rua, Numero = @Numero, Bairro = @Bairro, Cidade = @Cidade, Estado = @Estado WHERE Id = @Id", endereco);
             }
         }
 
@@ -45,14 +46,26 @@ namespace MVP_SQLite_Dapper_UpDB.Model
         {
             using (var connection = new SQLiteConnection("Data Source=database.db"))
             {
-                connection.Execute("DELETE FROM Enderecos WHERE Id = @id", new { id });
+                connection.Execute("DELETE FROM enderecos WHERE Id = @id", new { id });
             }
         }
         public static IEnumerable<Endereco> ListAll()
         {
             using (var connection = new SQLiteConnection("Data Source=database.db"))
             {
-                return connection.Query<Endereco>("SELECT * FROM Enderecos");
+                return connection.Query<Endereco>("SELECT * FROM enderecos");
+            }
+        }
+
+        internal static object GetEnderecosByRua(string rua)
+        {
+            using (var connection = new SQLiteConnection("Data Source = database.db"))
+            {
+                var enderecos = connection.Query<Endereco>(
+                    "SELECT * FROM enderecos WHERE Rua LIKE @rua",
+                    new { rua = $"%{rua}%" });
+
+                return enderecos;
             }
         }
     }

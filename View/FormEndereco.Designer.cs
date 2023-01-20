@@ -43,7 +43,13 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.dgvEnderecos = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnSearchByRua = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtSearchRua = new System.Windows.Forms.TextBox();
+            this.btnShowAll = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEnderecos)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -183,11 +189,61 @@
             this.dgvEnderecos.Size = new System.Drawing.Size(800, 332);
             this.dgvEnderecos.TabIndex = 21;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnShowAll);
+            this.groupBox1.Controls.Add(this.btnSearchByRua);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.txtSearchRua);
+            this.groupBox1.Location = new System.Drawing.Point(439, 9);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(349, 217);
+            this.groupBox1.TabIndex = 22;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Filters";
+            // 
+            // btnSearchByRua
+            // 
+            this.btnSearchByRua.Location = new System.Drawing.Point(221, 20);
+            this.btnSearchByRua.Name = "btnSearchByRua";
+            this.btnSearchByRua.Size = new System.Drawing.Size(80, 30);
+            this.btnSearchByRua.TabIndex = 23;
+            this.btnSearchByRua.Text = "Search";
+            this.btnSearchByRua.UseVisualStyleBackColor = true;
+            this.btnSearchByRua.Click += new System.EventHandler(this.btnSearchByRua_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 28);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(37, 15);
+            this.label6.TabIndex = 24;
+            this.label6.Text = "Street";
+            // 
+            // txtSearchRua
+            // 
+            this.txtSearchRua.Location = new System.Drawing.Point(49, 25);
+            this.txtSearchRua.Name = "txtSearchRua";
+            this.txtSearchRua.Size = new System.Drawing.Size(166, 23);
+            this.txtSearchRua.TabIndex = 23;
+            // 
+            // btnShowAll
+            // 
+            this.btnShowAll.Location = new System.Drawing.Point(6, 181);
+            this.btnShowAll.Name = "btnShowAll";
+            this.btnShowAll.Size = new System.Drawing.Size(80, 30);
+            this.btnShowAll.TabIndex = 23;
+            this.btnShowAll.Text = "Clear";
+            this.btnShowAll.UseVisualStyleBackColor = true;
+            this.btnShowAll.Click += new System.EventHandler(this.btnShowAll_Click);
+            // 
             // FormEndereco
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 564);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvEnderecos);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnEdit);
@@ -206,6 +262,8 @@
             this.Name = "FormEndereco";
             this.Text = "Address";
             ((System.ComponentModel.ISupportInitialize)(this.dgvEnderecos)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,5 +286,10 @@
         private Button btnDelete;
         private Button btnSave;
         private DataGridView dgvEnderecos;
+        private GroupBox groupBox1;
+        private Button btnSearchByRua;
+        private Label label6;
+        private TextBox txtSearchRua;
+        private Button btnShowAll;
     }
 }

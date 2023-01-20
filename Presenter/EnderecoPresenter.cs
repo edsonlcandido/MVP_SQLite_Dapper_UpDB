@@ -82,6 +82,14 @@ namespace MVP_SQLite_Dapper_UpDB.Presenter
             _view.Bairro = "";
             _view.Cidade = "";
             _view.Estado = "";
+            _view.RuaPesquisa = "";
+        }
+
+        internal void SearchByRua()
+        {
+            string rua = _view.RuaPesquisa;
+            var enderecos = Endereco.GetEnderecosByRua(rua);
+            _view.Enderecos.DataSource = enderecos;
         }
     }
 }

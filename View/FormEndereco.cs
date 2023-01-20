@@ -27,10 +27,18 @@ namespace MVP_SQLite_Dapper_UpDB.View
         public string Estado { get => txtEstado.Text; set => txtEstado.Text = value; }
         public int Id { get; set; }
         public DataGridView Enderecos { get => dgvEnderecos; set => dgvEnderecos = value; }
+        public string RuaPesquisa { get => txtSearchRua.Text; set => txtSearchRua.Text = value; }
+
         public void ShowMessage(string message) => MessageBox.Show(message);
         private void btnClear_Click(object sender, EventArgs e) => _presenter.Clear();
         private void btnSave_Click(object sender, EventArgs e) => _presenter.Save();
         private void btnEdit_Click(object sender, EventArgs e) => _presenter.Edit();
         private void btnDelete_Click(object sender, EventArgs e) => _presenter.Delete();
+        private void btnSearchByRua_Click(object sender, EventArgs e) => _presenter.SearchByRua();
+
+        private void btnShowAll_Click(object sender, EventArgs e)
+        {
+            _presenter.LoadEnderecos();
+        }
     }
 }
