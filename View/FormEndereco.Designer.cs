@@ -44,10 +44,10 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.dgvEnderecos = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnShowAll = new System.Windows.Forms.Button();
             this.btnSearchByRua = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.txtSearchRua = new System.Windows.Forms.TextBox();
-            this.btnShowAll = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEnderecos)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -179,6 +179,7 @@
             this.dgvEnderecos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvEnderecos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvEnderecos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEnderecos.Location = new System.Drawing.Point(0, 232);
             this.dgvEnderecos.MultiSelect = false;
@@ -186,7 +187,7 @@
             this.dgvEnderecos.ReadOnly = true;
             this.dgvEnderecos.RowTemplate.Height = 25;
             this.dgvEnderecos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEnderecos.Size = new System.Drawing.Size(800, 332);
+            this.dgvEnderecos.Size = new System.Drawing.Size(758, 332);
             this.dgvEnderecos.TabIndex = 21;
             // 
             // groupBox1
@@ -197,10 +198,20 @@
             this.groupBox1.Controls.Add(this.txtSearchRua);
             this.groupBox1.Location = new System.Drawing.Point(439, 9);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(349, 217);
+            this.groupBox1.Size = new System.Drawing.Size(312, 217);
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filters";
+            // 
+            // btnShowAll
+            // 
+            this.btnShowAll.Location = new System.Drawing.Point(6, 181);
+            this.btnShowAll.Name = "btnShowAll";
+            this.btnShowAll.Size = new System.Drawing.Size(80, 30);
+            this.btnShowAll.TabIndex = 23;
+            this.btnShowAll.Text = "Clear";
+            this.btnShowAll.UseVisualStyleBackColor = true;
+            this.btnShowAll.Click += new System.EventHandler(this.btnShowAll_Click);
             // 
             // btnSearchByRua
             // 
@@ -228,21 +239,11 @@
             this.txtSearchRua.Size = new System.Drawing.Size(166, 23);
             this.txtSearchRua.TabIndex = 23;
             // 
-            // btnShowAll
-            // 
-            this.btnShowAll.Location = new System.Drawing.Point(6, 181);
-            this.btnShowAll.Name = "btnShowAll";
-            this.btnShowAll.Size = new System.Drawing.Size(80, 30);
-            this.btnShowAll.TabIndex = 23;
-            this.btnShowAll.Text = "Clear";
-            this.btnShowAll.UseVisualStyleBackColor = true;
-            this.btnShowAll.Click += new System.EventHandler(this.btnShowAll_Click);
-            // 
             // FormEndereco
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 564);
+            this.ClientSize = new System.Drawing.Size(758, 564);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvEnderecos);
             this.Controls.Add(this.btnClear);
