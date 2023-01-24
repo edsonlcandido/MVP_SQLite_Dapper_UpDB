@@ -169,3 +169,280 @@ public class Usuario
         } 
 }
 ```
+
+Após a operação de criação de usuario, iniciei as demais operações de ler, atualizar e deletar, abaixo vai estar somente os trechos de cada operação como o link para o arquivo.
+
+Para leitura e atualização do modelo deixei no mesmo botão do form, onde a leitura ocorre recuperando o objeto do BidingSource.
+
+Para a atualização é enviado os dados da view para o presenter e após enviado para o evento save usuario do model, q verifica se o model tem id diferente de 0.
+
+```C#
+// Arquivo FormUsuario.cs
+public partial class FormUsuario : Form, IUsuarioView
+  {
+    ...  
+      private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            if (this.Id ==0)
+            {
+                Usuario usuario = (Usuario)_bindingSource.Current;
+                this.Nome = usuario.Nome;
+                this.Sobrenome = usuario.Sobrenome;
+                this.Id = usuario.Id;
+            }
+            else
+            {
+                UpdateEvent?.Invoke(sender, e);
+            }
+        }
+      ...
+  } 
+```
+
+```C#
+// Arquivo UsuarioPresenter.cs
+public class UsuarioPresenter
+{
+    ...
+      private void UpdateUsuario(object sender, EventArgs e)
+      {
+          Usuario usuario = new Usuario
+          {
+              Id = _view.Id,
+              Nome = _view.Nome,
+              Sobrenome = _view.Sobrenome
+          };
+          Usuario.Save(usuario);
+          LoadUsuarios();
+          ClearUsuario(sender, e);
+      }
+    ...
+}
+```
+
+A operação de excluir o usuario é mais simples que a operação de edição e fica similar a operação de salvar o usurio.
+
+```C#
+// Arquivo FormUsuario.cs
+public partial class FormUsuario : Form, IUsuarioView
+    {
+    ...
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            Usuario usuario = (Usuario)_bindingSource.Current;
+            this.Id = usuario.Id;
+            DeleteEvent?.Invoke(sender, e);
+        }
+    ...
+    }
+```
+
+```C#
+// Arquivo UsuarioPresenter.cs
+ public class UsuarioPresenter
+    {
+    ...
+        private void DeleteUsuario(object sender, EventArgs e)
+        {
+            Usuario.Delete(_view.Id);
+            LoadUsuarios();
+            ClearUsuario(sender, e);
+        }
+    ...
+    }
+```
+
+```C#
+// Arquivo Usuario.cs
+public class Usuario
+    {
+    ...
+        public static void Delete(int id)
+        {
+            using (var connection = new SQLiteConnection("Data Source=database.db"))
+            {
+                connection.Execute("DELETE FROM usuarios WHERE id = @id", new { id });
+            }
+        }
+    ...
+    }
+```
+
+Para criar as operações de CRUD para o modelo endereco, pedi ao CHATGPT para ler esse repositorio e criar os arquivos IEnderecoView.cs, EnderecoPresenter.cs e o Endereco.cs
+
+Copiei o código gerado e fui verificar inconsistências, o código teve bem pouco erro.
+
+Solicitei que ele criar a parte parcial do form onde ele definiu os nomes dos textboxes, botão e eventos dos cliques dor forms.
+
+Nessa abordagem o arquivos criado ficaram da seguinte maneira, ele modificou a estrategia retirando os events do View, achei essa maneira mais enxuta, porém não sei dizer se é melhor que a outra.
+
+```C#
+// arquivo View/FormEndereco.cs
+    public partial class FormEndereco : Form, IEnderecoView
+    {
+        private EnderecoPresenter _presenter;
+        public FormEndereco()
+        {
+            InitializeComponent();
+            _presenter = new EnderecoPresenter(this);
+            _presenter.LoadEnderecos();
+        }
+        public string Rua { get => txtRua.Text; set => txtRua.Text = value; }
+        public string Numero { get => txtNumero.Text; set => txtNumero.Text = value; }
+        public string Bairro { get => txtBairro.Text; set => txtBairro.Text = value; }
+        public string Cidade { get => txtCidade.Text; set => txtCidade.Text = value; }
+        public string Estado { get => txtEstado.Text; set => txtEstado.Text = value; }
+        public int Id { get; set; }
+        public DataGridView Enderecos { get => dgvEnderecos; set => dgvEnderecos = value; }
+        public void ShowMessage(string message) => MessageBox.Show(message);
+        private void btnClear_Click(object sender, EventArgs e) => _presenter.Clear();
+        private void btnSave_Click(object sender, EventArgs e) => _presenter.Save();
+        private void btnEdit_Click(object sender, EventArgs e) => _presenter.Edit();
+        private void btnDelete_Click(object sender, EventArgs e) => _presenter.Delete();
+    }
+```
+
+```C#
+// Arquivos View/IEnderecoView.cs
+    public interface IEnderecoView
+    {
+        string Rua { get; set; }
+        string Numero { get; set; }
+        string Bairro { get; set; }
+        string Cidade { get; set; }
+        string Estado { get; set; }
+        int Id { get; set; }
+        DataGridView Enderecos { get; set; }
+        void ShowMessage(string message);
+    }
+```
+
+```C#
+// Arquivo Presenter/EnderecoPresenter.cs
+  public class EnderecoPresenter
+    {
+        private readonly IEnderecoView _view;
+        public EnderecoPresenter(IEnderecoView view) => _view = view;
+        public void Save()
+        {
+            var endereco = new Endereco
+            {
+                Rua = _view.Rua,
+                Numero = int.Parse(_view.Numero),
+                Bairro = _view.Bairro,
+                Cidade = _view.Cidade,
+                Estado = _view.Estado
+            };
+            Endereco.Save(endereco);
+            _view.ShowMessage("Endereco salvo com sucesso!");
+            Clear();
+            LoadEnderecos();
+        }
+        public void Delete()
+        {
+            Endereco.Delete(_view.Id);
+            _view.ShowMessage("Endereco excluido com sucesso!");
+            LoadEnderecos();
+        }
+        public void Edit()
+        {
+            if (_view.Id == 0)
+            {
+                int selectedId = (int)_view.Enderecos.SelectedRows[0].Cells["Id"].Value;
+                _view.Id = selectedId;
+                LoadEndereco();
+            }
+            else
+            {
+                var endereco = new Endereco
+                {
+                    Id = _view.Id,
+                    Rua = _view.Rua,
+                    Numero = int.Parse(_view.Numero),
+                    Bairro = _view.Bairro,
+                    Cidade = _view.Cidade,
+                    Estado = _view.Estado
+                };
+                Endereco.Update(endereco);
+                _view.ShowMessage("Endereco atualizado com sucesso!");
+                Clear();
+                LoadEnderecos();
+            }
+
+        }
+        public void LoadEndereco()
+        {
+            var endereco = Endereco.GetById(_view.Id);
+            _view.Rua = endereco.Rua;
+            _view.Numero = endereco.Numero.ToString();
+            _view.Bairro = endereco.Bairro;
+            _view.Cidade = endereco.Cidade;
+            _view.Estado = endereco.Estado;
+        }
+        public void LoadEnderecos()
+        {
+            var enderecos = Endereco.ListAll();
+            _view.Enderecos.DataSource = enderecos;
+        }
+        public void Clear()
+        {
+            _view.Id = 0;
+            _view.Rua = "";
+            _view.Numero = "";
+            _view.Bairro = "";
+            _view.Cidade = "";
+            _view.Estado = "";
+        }
+    }
+```
+
+```C#
+// Arquivo Model/Endereco.cs
+    public class Endereco
+    {
+        public int Id { get; set; }
+        public string Rua { get; set; }
+        public int Numero { get; set; }
+        public string Bairro { get; set; }
+        public string Cidade { get; set; }
+        public string Estado { get; set; }
+
+        public static void Save(Endereco endereco)
+        {
+            using (var connection = new SQLiteConnection("Data Source=database.db"))
+            {
+                connection.Execute("INSERT INTO Enderecos (Rua, Numero, Bairro, Cidade, Estado) VALUES (@Rua, @Numero, @Bairro, @Cidade, @Estado)", endereco);
+            }
+        }
+
+        public static Endereco GetById(int id)
+        {
+            using (var connection = new SQLiteConnection("Data Source=database.db"))
+            {
+                return connection.QueryFirstOrDefault<Endereco>("SELECT * FROM Enderecos WHERE Id = @id", new { id });
+            }
+        }
+
+        public static void Update(Endereco endereco)
+        {
+            using (var connection = new SQLiteConnection("Data Source=database.db"))
+            {
+                connection.Execute("UPDATE Enderecos SET Rua = @Rua, Numero = @Numero, Bairro = @Bairro, Cidade = @Cidade, Estado = @Estado WHERE Id = @Id", endereco);
+            }
+        }
+
+        public static void Delete(int id)
+        {
+            using (var connection = new SQLiteConnection("Data Source=database.db"))
+            {
+                connection.Execute("DELETE FROM Enderecos WHERE Id = @id", new { id });
+            }
+        }
+        public static IEnumerable<Endereco> ListAll()
+        {
+            using (var connection = new SQLiteConnection("Data Source=database.db"))
+            {
+                return connection.Query<Endereco>("SELECT * FROM Enderecos");
+            }
+        }
+```

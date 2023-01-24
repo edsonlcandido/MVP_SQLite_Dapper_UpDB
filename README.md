@@ -8,7 +8,7 @@ I decided to create this repository after creating some small applications and s
 
 To start applying the MVP pattern from the beginning, I consulted ChatGPT for initial insights, the transcription of the conversation can be found in the [ChatGTP.md](./ChatGPT.md) file (conversation in portuguese)
 
-## Criando o banco de dados
+## Create the database
 
 One problem I faced was controlling the local SQLite database via git, as it is a binary file and could overwrite the database already in production. 
 
@@ -52,7 +52,7 @@ internal static class Program
 }
 ```
 
-## Operação de adicionar Usuario ao banco de dados
+## Add Usuario to database
 
 In the MVP pattern, we have the following sequence when clicking on an action button in the form:
 
