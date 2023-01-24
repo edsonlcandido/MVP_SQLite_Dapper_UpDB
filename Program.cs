@@ -68,7 +68,7 @@ namespace MVP_SQLite_Dapper_UpDB
                     var backup = new BackupDatabase(fileToBackup, backupPath);
                     backup.PerformBackup();
                 }
-                Application.Run(new FormMain());
+                Application.Run(new FormUsuario());
             }            
         }
         [DllImport("kernel32.dll", SetLastError = true)]
