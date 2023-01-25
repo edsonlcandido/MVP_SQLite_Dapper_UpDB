@@ -17,5 +17,6 @@ namespace MVP_SQLite_Dapper_UpDB.View
         event EventHandler ClearEvent;
         event EventHandler DeleteEvent;
         event EventHandler UpdateEvent;
+        event EventHandler DetailsEvent;
     }
 }

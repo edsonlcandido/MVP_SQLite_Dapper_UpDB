@@ -37,6 +37,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridViewUsuario = new System.Windows.Forms.DataGridView();
             this.buttonClear = new System.Windows.Forms.Button();
+            this.buttonDetails = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsuario)).BeginInit();
             this.SuspendLayout();
             // 
@@ -130,11 +131,22 @@
             this.buttonClear.UseVisualStyleBackColor = true;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
+            // buttonDetails
+            // 
+            this.buttonDetails.Location = new System.Drawing.Point(356, 108);
+            this.buttonDetails.Name = "buttonDetails";
+            this.buttonDetails.Size = new System.Drawing.Size(80, 30);
+            this.buttonDetails.TabIndex = 9;
+            this.buttonDetails.Text = "Details";
+            this.buttonDetails.UseVisualStyleBackColor = true;
+            this.buttonDetails.Click += new System.EventHandler(this.buttonDetails_Click);
+            // 
             // FormUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(698, 530);
+            this.Controls.Add(this.buttonDetails);
             this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.dataGridViewUsuario);
             this.Controls.Add(this.label2);
@@ -165,5 +177,6 @@
         private Label label2;
         private DataGridView dataGridViewUsuario;
         private Button buttonClear;
+        private Button buttonDetails;
     }
 }

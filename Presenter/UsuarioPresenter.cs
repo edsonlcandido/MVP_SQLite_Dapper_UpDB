@@ -18,7 +18,14 @@ namespace MVP_SQLite_Dapper_UpDB.Presenter
             _view.ClearEvent += ClearUsuario;
             _view.UpdateEvent += UpdateUsuario;
             _view.DeleteEvent += DeleteUsuario;
+            _view.DetailsEvent += DetailsUsuario;
             LoadUsuarios();
+        }
+
+        private void DetailsUsuario(object? sender, EventArgs e)
+        {
+            FormUsuarioDetalhes formUsuarioDetalhes = new FormUsuarioDetalhes(_view.Id);
+            formUsuarioDetalhes.ShowDialog();
         }
 
         public void LoadUsuarios()

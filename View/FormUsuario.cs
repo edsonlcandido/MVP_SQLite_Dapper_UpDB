@@ -31,6 +31,7 @@ namespace MVP_SQLite_Dapper_UpDB.View
         public event EventHandler ClearEvent;
         public event EventHandler DeleteEvent;
         public event EventHandler UpdateEvent;
+        public event EventHandler DetailsEvent;
 
         public void LoadUsuarios(IEnumerable<Usuario> usuarios)
         {
@@ -73,6 +74,13 @@ namespace MVP_SQLite_Dapper_UpDB.View
             Usuario usuario = (Usuario)_bindingSource.Current;
             this.Id = usuario.Id;
             DeleteEvent?.Invoke(sender, e);
+        }
+
+        private void buttonDetails_Click(object sender, EventArgs e)
+        {
+            Usuario usuario = (Usuario)_bindingSource.Current;
+            this.Id = usuario.Id;
+            DetailsEvent?.Invoke(sender, e);
         }
     }
 }
