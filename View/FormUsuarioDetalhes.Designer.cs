@@ -34,6 +34,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridViewAddresses = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddresses)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,11 +102,21 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Addresses:";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(83, 75);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "add";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // FormUsuarioDetalhes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(469, 383);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dataGridViewAddresses);
             this.Controls.Add(this.labelLastName);
@@ -129,5 +140,6 @@
         private Label label3;
         private DataGridView dataGridViewAddresses;
         private Label label2;
+        private Button button1;
     }
 }
