@@ -5,5 +5,6 @@
         int Id { get; set; }
         string Nome { get; set; }
         string Sobrenome { get; set; }
+        DataGridView Enderecos { get; set; }
     }
 }

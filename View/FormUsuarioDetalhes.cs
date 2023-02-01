@@ -1,4 +1,5 @@
 ﻿using MVP_SQLite_Dapper_UpDB.Model;
+using MVP_SQLite_Dapper_UpDB.Presenter;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ namespace MVP_SQLite_Dapper_UpDB.View
 {
     public partial class FormUsuarioDetalhes : Form, IUsuarioDetailsView
     {
+        private UsuarioDetalhesPresenter _presenter;
         public FormUsuarioDetalhes(int id)
         {
             InitializeComponent();
@@ -20,12 +22,14 @@ namespace MVP_SQLite_Dapper_UpDB.View
             Nome = usuario.Nome;
             Sobrenome = usuario.Sobrenome;
             Id = usuario.Id;
+            _presenter = new UsuarioDetalhesPresenter(this);
+            _presenter.LoadEnderecos();
         }
 
         public int Id { get ; set ; }
         public string Nome { get=> labelFirstName.Text ; set => labelFirstName.Text = value ; }
         public string Sobrenome { get => labelLastName.Text; set => labelLastName.Text = value; }
-
+        public DataGridView Enderecos { get => dataGridViewAddresses; set => dataGridViewAddresses = value; }
 
         private void FormUsuarioDetalhes_Load(object sender, EventArgs e)
         {

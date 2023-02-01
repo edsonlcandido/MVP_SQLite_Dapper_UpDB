@@ -28,6 +28,9 @@
     <None Update="Migrations\202301191245_create_enderecos.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Migrations\202301312039_create_table_usuarios_enderecos.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
