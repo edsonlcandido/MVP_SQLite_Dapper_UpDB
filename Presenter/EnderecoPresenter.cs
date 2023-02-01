@@ -30,6 +30,11 @@ namespace MVP_SQLite_Dapper_UpDB.Presenter
         }
         public void Delete()
         {
+            if (_view.Id == 0)
+            {
+                int selectedId = (int)_view.Enderecos.SelectedRows[0].Cells["Id"].Value;
+                _view.Id = selectedId;                
+            }
             Endereco.Delete(_view.Id);
             _view.ShowMessage("Endereco excluido com sucesso!");
             LoadEnderecos();
