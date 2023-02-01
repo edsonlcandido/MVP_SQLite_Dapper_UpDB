@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace MVP_SQLite_Dapper_UpDB.View
 {
-    public partial class FormUsuarioDetalhes : Form, IUsuarioDetailsView
+    public partial class FormUsuarioDetalhes : Form, IUsuarioDetalhesView
     {
         private UsuarioDetalhesPresenter _presenter;
         public FormUsuarioDetalhes(int id)
@@ -34,6 +34,11 @@ namespace MVP_SQLite_Dapper_UpDB.View
         private void FormUsuarioDetalhes_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonAddAddress_Click(object sender, EventArgs e)
+        {
+            _presenter.Add();
         }
     }
 }

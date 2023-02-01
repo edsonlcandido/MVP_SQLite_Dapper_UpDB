@@ -1,6 +1,6 @@
 ﻿namespace MVP_SQLite_Dapper_UpDB.View
 {
-    public interface IUsuarioDetailsView
+    public interface IUsuarioDetalhesView
     {
         int Id { get; set; }
         string Nome { get; set; }

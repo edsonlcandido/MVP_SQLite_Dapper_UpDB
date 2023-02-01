@@ -14,7 +14,7 @@ namespace MVP_SQLite_Dapper_UpDB.Model
     {
         public static IEnumerable<Endereco> GetEnderecosByUsuario(int usuario_id)
         {
-            
+
             using (var connection = new SQLiteConnection("Data Source = database.db"))
             {
                 List<Endereco> enderecos = new List<Endereco>();
@@ -27,7 +27,15 @@ namespace MVP_SQLite_Dapper_UpDB.Model
                 }
                 return enderecos;
             }
-            
+
+        }
+
+        public static void Save(int usuario_Id, int endereco_Id)
+        {
+            using (var connection = new SQLiteConnection("Data Source = database.db"))
+            {
+                connection.Execute("INSERT INTO usuarios_enderecos (usuario_Id, endereco_Id) VALUES (@usuario_Id, @endereco_Id)", new { usuario_Id, endereco_Id });
+            }
         }
     }
 }

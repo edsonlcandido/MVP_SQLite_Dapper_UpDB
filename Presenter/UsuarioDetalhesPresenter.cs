@@ -10,8 +10,8 @@ namespace MVP_SQLite_Dapper_UpDB.Presenter
 {
     public class UsuarioDetalhesPresenter
     {
-        private readonly IUsuarioDetailsView _view;
-        public UsuarioDetalhesPresenter(IUsuarioDetailsView view)
+        private readonly IUsuarioDetalhesView _view;
+        public UsuarioDetalhesPresenter(IUsuarioDetalhesView view)
         {
             _view = view;
         }
@@ -19,6 +19,17 @@ namespace MVP_SQLite_Dapper_UpDB.Presenter
         {
             var enderecos = Usuario_Enderecos.GetEnderecosByUsuario(_view.Id);
             _view.Enderecos.DataSource = enderecos;
+        }
+
+        public void Add()
+        {
+            Model.Usuario  usuario = new  Usuario();
+            usuario.Id = _view.Id;
+            usuario.Nome = _view.Nome;
+            usuario.Sobrenome = _view.Sobrenome;
+            FormAdicionarEndereco formAdicionarEndereco = new FormAdicionarEndereco(usuario);
+            formAdicionarEndereco.ShowDialog();
+            LoadEnderecos();
         }
     }
 }
