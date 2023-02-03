@@ -40,5 +40,10 @@ namespace MVP_SQLite_Dapper_UpDB.View
         {
             _presenter.Add();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
