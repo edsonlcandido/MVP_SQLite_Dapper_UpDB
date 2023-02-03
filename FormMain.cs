@@ -7,6 +7,7 @@ namespace MVP_SQLite_Dapper_UpDB
         public FormMain()
         {
             InitializeComponent();
+            this.MdiChildActivate += new EventHandler(FormMain_MdiChildActivate);
         }
 
         private void buttonUsers_Click(object sender, EventArgs e)
@@ -33,6 +34,16 @@ namespace MVP_SQLite_Dapper_UpDB
             FormEnderecoSingleton.Instance.ControlBox = false;
             FormEnderecoSingleton.Instance.MdiParent = this;
             FormEnderecoSingleton.Instance.Show();
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormMain_MdiChildActivate(object sender, EventArgs e)
+        {
+            // Aqui você pode colocar o código para capturar o evento de abertura de qualquer form filho
         }
     }
 
